@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="X-Fruit - Frutas Congeladas 100% Naturais. Qualidade, sabor e saúde em cada embalagem.">
+    <title>X-Fruit - Frutas Congeladas Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #000;
+            color: white;
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 110px;
+            width: auto;
+            margin-top: 10px;   /* desce um pouco */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff00;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #000;
+            color: white;
+            padding: 180px 2rem 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* “papel de parede” diagonal com espaçamento fixo */
+.xfruit-pattern{
+  position:absolute;
+  inset:-80%;                 /* garante que cobre tudo mesmo rotacionado */
+  transform: rotate(-35deg);
+  opacity: 0.055;
+  pointer-events:none;
+
+  /* Tile que repete de verdade */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='260' viewBox='0 0 700 260'%3E%3Crect width='700' height='260' fill='none'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial, sans-serif' font-size='84' font-weight='900' letter-spacing='12' fill='%2300ff00'%3EX-FRUIT%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 340px 140px;   /* <<< controla a “quantidade” */
+}
+
+
+
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.8;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #00ff00;
+            color: #000;
+            padding: 1.2rem 3.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0,255,0,0.4);
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,255,0,0.5);
+            background: #00dd00;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        /* Benefícios */
+        .benefits {
+            background: #f8f9fa;
+        }
+
+        .benefits-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+        }
+
+        .benefit-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            color: #00cc00;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .benefit-card p {
+            color: #666;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Produtos */
+        .products {
+            background: white;
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid #f0f0f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,255,0,0.15);
+            border-color: #00ff00;
+        }
+
+        .product-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+        }
+
+        .product-info {
+            padding: 1.8rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .product-sizes {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .size-badge {
+            background: #00ff00;
+            color: #000;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        /* Depoimentos */
+        .testimonials {
+            background: linear-gradient(135deg, #329C22 0%, #2DC217 100%);
+            color: white;
+        }
+
+        .testimonials .section-title {
+            color: white;
+        }
+
+        .testimonials-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.15);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        /* Contato */
+        .contact {
+            background: #f8f9fa;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ff00;
+            box-shadow: 0 0 0 3px rgba(0,255,0,0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, #00ff00 0%, #00cc00 100%);
+            color: #000;
+            padding: 1.3rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,255,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .xfruit-text {
+                font-size: 3.5rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 140px 1.5rem 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2.5rem;
+                font-size: 1.05rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDYwMCA2MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJibGFjayIvPgo8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0MCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMwMGZmMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPlgtRnJ1aXQ8L3RleHQ+Cjwvc3ZnPg==" alt="X-Fruit">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+  <div class="xfruit-pattern"></div>
+</div>
+
+
+        <div class="hero-content">
+            <h1>SABOR NATURAL, QUALIDADE CONGELADA</h1>
+            <p>Frutas 100% naturais, colhidas no ponto perfeito e congeladas para preservar todos os nutrientes. Praticidade e saúde para seu dia a dia.</p>
+            <a href="#contato" class="cta-button">Quero Conhecer</a>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" class="benefits">
+        <h2 class="section-title">Por Que Escolher Frutas Congeladas?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">❄️</div>
+                <h3>Frescor Preservado</h3>
+                <p>Congelamento rápido logo após a colheita mantém vitaminas, minerais e sabor intactos.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">⏰</div>
+                <h3>Praticidade Total</h3>
+                <p>Frutas prontas para consumo, sem desperdício. Ideal para smoothies, vitaminas e receitas.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🌱</div>
+                <h3>100% Natural</h3>
+                <p>Sem conservantes, sem açúcar adicionado. Apenas a fruta em seu estado mais puro.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">💪</div>
+                <h3>Rico em Nutrientes</h3>
+                <p>Fonte de vitaminas, fibras e antioxidantes para fortalecer sua saúde.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos -->
+    <section id="produtos" class="products">
+        <h2 class="section-title">Nossos Produtos</h2>
+        <div class="products-grid">
+            <!-- MORANGO -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1675731118661-15dc54c11130?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <div class="product-info">
+                    <h3>Morango</h3>
+                    <p class="product-description">Morangos suculentos, perfeitos para vitaminas</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">750g</span>
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABACAXI -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1675237625761-e4699063983d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <div class="product-info">
+                    <h3>Abacaxi</h3>
+                    <p class="product-description">Abacaxi tropical doce e refrescante</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">750g</span>
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABACAXI COM HORTELÃ -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://res.cloudinary.com/dx8yz4pez/image/upload/v1765892879/Abacaxi_com_hortel%C3%A3.jpeg_plugmw.jpg');"></div>
+                <div class="product-info">
+                    <h3>Abacaxi com Hortelã</h3>
+                    <p class="product-description">Combinação refrescante e saborosa</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">750g</span>
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACEROLA -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1693931813915-9fcca41f222a?q=80&w=1112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <div class="product-info">
+                    <h3>Acerola</h3>
+                    <p class="product-description">Cremosidade natural para smoothies</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">750g</span>
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FRAMBOESA -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <div class="product-info">
+                    <h3>Framboesa</h3>
+                    <p class="product-description">Sabor vibrante e um toque de acidez</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">750g</span>
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AMORA -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1725899522222-c3782c803e4d?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <div class="product-info">
+                    <h3>Amora</h3>
+                    <p class="product-description">Sabor delicado e aromático</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">750g</span>
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- MIRTILO (BLUEBERRY) -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1594002348772-bc0cb57ade8b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <div class="product-info">
+                    <h3>Mirtilo</h3>
+                    <p class="product-description">Fonte poderosa de antioxidantes</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">750g</span>
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MARACUJÁ -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://res.cloudinary.com/dx8yz4pez/image/upload/v1765897689/Maracuj%C3%A1_wv3llq.jpg');"></div>
+                <div class="product-info">
+                    <h3>Maracujá</h3>
+                    <p class="product-description">Sabor intenso e tropical</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FRUTAS VERMELHAS MIX -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://res.cloudinary.com/dx8yz4pez/image/upload/v1765897977/Frutas_Vermelhas_r4gkck.jpg');"></div>
+                <div class="product-info">
+                    <h3>Frutas Vermelhas</h3>
+                    <p class="product-description">Mix completo: morango, framboesa, amora e mirtilo</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">750g</span>
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MANGA -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1725813912692-e37fd5aa1b5a?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <div class="product-info">
+                    <h3>Manga</h3>
+                    <p class="product-description">Doçura tropical irresistível</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">750g</span>
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GOIABA -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://res.cloudinary.com/dx8yz4pez/image/upload/v1765904277/Goiaba_lkjzmo.png');"></div>
+                <div class="product-info">
+                    <h3>Goiaba</h3>
+                    <p class="product-description">Sabor único e marcante</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">750g</span>
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAJU -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://res.cloudinary.com/dx8yz4pez/image/upload/v1765898439/Caju_zpfjwy.jpg');"></div>
+                <div class="product-info">
+                    <h3>Caju</h3>
+                    <p class="product-description">Sabor brasileiro autêntico</p>
+                    <div class="product-sizes">
+                        <span class="size-badge">750g</span>
+                        <span class="size-badge">100g</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="testimonials">
+        <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p>"Mudou completamente minha rotina! Agora faço smoothies todos os dias sem esforço. As frutas são deliciosas e sempre frescas."</p>
+                <div class="testimonial-author">
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <span>— Maria Silva</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Qualidade excepcional! Como nutricionista, recomendo para todos meus pacientes. Praticidade sem abrir mão da saúde."</p>
+                <div class="testimonial-author">
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <span>— Dr. João Santos</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Minhas crianças adoram! Consigo incluir frutas na alimentação deles de forma fácil e gostosa. Super recomendo!"</p>
+                <div class="testimonial-author">
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <span>— Ana Paula</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="contato" class="contact">
+<h2 class="section-title">Entre em Contato</h2>
+
+<div class="contact-container">
+<div class="contact-form" style="text-align:center">
+
+<p style="font-size:1.15rem; margin-bottom:2.5rem; color:#333;">
+Fale conosco pelos canais abaixo.  
+Atendimento rápido e direto:
+</p>
+
+<p style="font-size:1.3rem; margin-bottom:1.6rem;">
+📱 <strong>Telefone / WhatsApp</strong><br>
+<a href="https://wa.me/5511968607909"
+   target="_blank"
+   style="color:#00cc00; text-decoration:none; font-weight:700;">
+(11) 9 6860-7909
+</a>
+</p>
+
+<p style="font-size:1.2rem; margin-bottom:1.6rem;">
+✉️ <strong>E-mail</strong><br>
+<a href="mailto:atendimento@x-fruit.com.br"
+   style="color:#00cc00; text-decoration:none; font-weight:700;">
+atendimento@x-fruit.com.br
+</a>
+</p>
+
+<p style="font-size:1.1rem; line-height:1.7; color:#444;">
+📍 <strong>Endereço</strong><br>
+Rua Cotoxó, 423<br>
+Perdizes – São Paulo – SP<br>
+CEP: 05021-000
+</p>
+
+</div>
+</div>
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 X-Fruit. Todos os direitos reservados.</p>
+        <p>Saúde e sabor natural em cada embalagem. </p>
+    </footer>
+
+    <script>
+        // Smooth scroll navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
